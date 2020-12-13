@@ -17,7 +17,7 @@ function valuetext(value) {
 const marks = [
   {
     value: -1,
-    label: '1',
+    label: '-1',
   },
   {
     value: 0,
