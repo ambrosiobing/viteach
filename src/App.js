@@ -1,12 +1,49 @@
-
-
 import React, { Component } from 'react';
 import { Segment, Grid } from 'semantic-ui-react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceLine } from 'recharts';
-import { Slider } from 'react-semantic-ui-range'
+
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import grey from '@material-ui/core/colors/grey';
+import yellow from '@material-ui/core/colors/yellow';
 
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
+
+function valuetext(value) {
+  return `${value}`;
+}
+
+const marks = [
+  {
+    value: -1,
+    label: '1',
+  },
+  {
+    value: 0,
+    label: '0',
+  },
+  {
+    value: 1,
+    label: '1',
+  },
+  {
+    value: 2,
+    label: '2',
+  },
+  {
+    value: 3,
+    label: '3',
+  },
+  {
+    value: 4,
+    label: '4',
+  },
+  {
+    value: 5,
+    label: '5',
+  },
+];
 
 function parabolaY(x,a,b,c) {
   return a * x * x + b * x + c
@@ -78,144 +115,77 @@ class App extends Component {
           <Grid.Column width={6}>
 
           <Segment>
-            <h4>
-              Koeffizient vor x<sup>2</sup> (<span style={{color: 'orange' }}><u>a</u></span>x<sup>2</sup> + bx + c)  
-            </h4>
+            <span>
+              <b>Koeffizient vor x<sup>2</sup> (<span style={{color: 'orange' }}><u>a</u></span>x<sup>2</sup> + bx + c)</b>
+            </span>
             <p>
-              <Slider color="white" inverted={false}
-                settings={{
-                  start: this.state.value1,
-                  min: -1,
-                  max: 6,
-                  step: 1,
-                  onChange: (value) => {
-                    this.setState({
-                      value1: value
-                    })
-                  }
-                }} />
+              <Typography id="discrete-slider-custom" gutterBottom style={{ color: grey[400], marginBottom: -20, marginTop: -20}}>
+                <h6>Hiermit kannst du die Form und Richtung der Öffnung der Parabel steuern</h6>
+              </Typography>
+              <Slider style={{ color: grey[400] }}
+                defaultValue={this.state.value1}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider-custom"
+                step={1}
+                valueLabelDisplay="auto"
+                marks={marks}
+                min={-1}
+                max={5}  
+                onChange={ (e, value) =>  
+                  this.setState({
+                    value1: value
+                  })
+                }
+              />
             </p>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={2}>
-                  -1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  0
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  2
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  3
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  4
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  5 
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  6
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
             
           </Segment>
           <Segment>
-            <h4>Koeffizient vor x (ax<sup>2</sup> + <span style={{ color: 'orange' }}><u>b</u></span>x + c)</h4>
+            <span><b>Koeffizient vor x (ax<sup>2</sup> + <span style={{ color: 'orange' }}><u>b</u></span>x + c)</b></span>
             <p>
-              <Slider color="white" inverted={false}
-                settings={{
-                  start: this.state.value2,
-                  min: -1,
-                  max: 6,
-                  step: 1,
-                  onChange: (value) => {
-                    this.setState({
-                      value2: value
-                    })
-                  }
-                }} />
+            <Typography id="discrete-slider-custom" gutterBottom style={{ color: grey[400], marginBottom: -20, marginTop: -20 }}>
+                <h6>Hiermit kannst du die Form der Parabeln ändern</h6>
+              </Typography>
+              <Slider style={{ color: grey[400] }}
+                defaultValue={this.state.value2}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider-custom"
+                step={1}
+                valueLabelDisplay="auto"
+                marks={marks}
+                min={-1}
+                max={5}  
+                onChange={ (e, value) =>  
+                  this.setState({
+                    value2: value
+                  })
+                }
+              />
             </p>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={2}>
-                  -1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  0
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  2
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  3
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  4
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  5 
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  6
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
             
           </Segment>
           <Segment>
-            <h4>Koeffizient vor 1 (ax<sup>2</sup> + bx + <span style={{ color: 'orange' }}><u>c</u></span>)</h4> 
+            <span><b>Koeffizient vor 1 (ax<sup>2</sup> + bx + <span style={{ color: 'orange' }}><u>c</u></span>)</b></span> 
             <p>
-              <Slider color="white" inverted={false}
-                settings={{
-                  start: this.state.value3,
-                  min: -1,
-                  max: 6,
-                  step: 1,
-                  onChange: (value) => {
-                    this.setState({
-                      value3: value
-                    })
-                  }
-                }} />
-            </p>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={2}>
-                  -1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  0
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  1
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  2
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  3
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  4
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  5 
-                </Grid.Column>
-                <Grid.Column width={2}>
-                  6
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-            
+            <Typography id="discrete-slider-custom" gutterBottom style={{ color: grey[400], marginBottom: -20, marginTop: -20 }}>
+                <h6>Hiermit kannst du die Höhe der Parabel steuern</h6>
+              </Typography>
+              <Slider style={{ color: grey[400] }}
+                defaultValue={this.state.value3}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider-custom"
+                step={1}
+                valueLabelDisplay="auto"
+                marks={marks}
+                min={-1}
+                max={5}  
+                onChange={ (e, value) =>  
+                  this.setState({
+                    value3: value
+                  })
+                }
+              />
+            </p>            
           </Segment>
 
           </Grid.Column >
@@ -234,14 +204,14 @@ class App extends Component {
 
         <Grid.Row style={{marginTop : -30, marginLeft: 20, marginBottom: 0}}>
           <Grid.Column width={7}>
-            <h3 textAlign="left">Funktionsgleichung der Parabel:</h3>
+            <span textAlign="left">Funktionsgleichung der Parabel:</span>
           </Grid.Column>
           <Grid.Column width={10}>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row style={{marginTop : -5, marginLeft: 40, marginBottom: 5}}>
           <Grid.Column width={6} textAlign="center" color='grey'>
-                <h3 style={{ color: 'black' }}>f(x) = <span style={{ color: 'blue' }}>a</span>x<sup>2</sup> + <span style={{ color: 'blue' }}>b</span>x + <span style={{ color: 'blue' }}>c</span></h3>
+                <span style={{ color: 'black' }}>f(x) = <span style={{ color: 'blue' }}>a</span>x<sup>2</sup> + <span style={{ color: 'blue' }}>b</span>x + <span style={{ color: 'blue' }}>c</span></span>
           </Grid.Column>
           <Grid.Column width={10}>
           </Grid.Column>
