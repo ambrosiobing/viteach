@@ -50,16 +50,16 @@ class App extends Component {
 
         <Grid.Row style={{marginTop : 20, marginRight: 20, marginLeft: 20, marginBottom: -10}}>
           <Grid.Column width={10}>
-            <h2>
+            <h3>
               Definition von Quadratischen Funktionen
-            </h2>
+            </h3>
           </Grid.Column>
           <Grid.Column width={6}>
-            <h3 style={{ color: 'blue' }}>params:<br />
+            <h4 style={{ color: 'blue' }}>params:<br />
               - coefficientx0 = {this.state.value1}<br />
               - coefficientx1 = {this.state.value2}<br />
               - coefficientx2 = {this.state.value3}<br />
-            </h3>
+            </h4>
           </Grid.Column>
         </Grid.Row>
 
@@ -75,12 +75,12 @@ class App extends Component {
         </Grid.Row>
 
         <Grid.Row style={{margin: 20}}>
-          <Grid.Column width={7}>
+          <Grid.Column width={6}>
 
           <Segment>
-            <h3>
+            <h4>
               Koeffizient vor x<sup>2</sup> (<span style={{color: 'orange' }}><u>a</u></span>x<sup>2</sup> + bx + c)  
-            </h3>
+            </h4>
             <p>
               <Slider color="white" inverted={false}
                 settings={{
@@ -126,7 +126,7 @@ class App extends Component {
             
           </Segment>
           <Segment>
-            <h3>Koeffizient vor x (ax<sup>2</sup> + <span style={{ color: 'orange' }}><u>b</u></span>x + c)</h3>
+            <h4>Koeffizient vor x (ax<sup>2</sup> + <span style={{ color: 'orange' }}><u>b</u></span>x + c)</h4>
             <p>
               <Slider color="white" inverted={false}
                 settings={{
@@ -172,7 +172,7 @@ class App extends Component {
             
           </Segment>
           <Segment>
-            <h3>Koeffizient vor 1 (ax<sup>2</sup> + bx + <span style={{ color: 'orange' }}><u>c</u></span>)</h3> 
+            <h4>Koeffizient vor 1 (ax<sup>2</sup> + bx + <span style={{ color: 'orange' }}><u>c</u></span>)</h4> 
             <p>
               <Slider color="white" inverted={false}
                 settings={{
@@ -219,8 +219,8 @@ class App extends Component {
           </Segment>
 
           </Grid.Column >
-          <Grid.Column width={9} >
-            <LineChart width={600} height={400} data={data} margin={{ top: 20, right: 80, bottom: 20, left: 10 }}>
+          <Grid.Column width={10} >
+            <LineChart width={400} height={300} data={data} margin={{ top: 20, right: 80, bottom: 20, left: 10 }}>
               <Line type="monotone" dataKey="f(x)-Werte" stroke="green" strokeWidth={2} />
               <XAxis dataKey="x-Werte" label={{ value: "x-Werte", position: 'outsideBottomCenter' }} />
               <YAxis dataKey="f(x)-Werte"  label={{ value: "f(x)-Werte", angle: -90, position: 'outsideLeftCenter' }} />
@@ -233,7 +233,7 @@ class App extends Component {
         </Grid.Row>
 
         <Grid.Row style={{marginTop : -30, marginLeft: 20, marginBottom: 0}}>
-          <Grid.Column width={6}>
+          <Grid.Column width={7}>
             <h3 textAlign="left">Funktionsgleichung der Parabel:</h3>
           </Grid.Column>
           <Grid.Column width={10}>
